@@ -20,8 +20,16 @@ request({ url, json: true }, (err, res) => {
 
 request({ url: latAndlong, json: true }, (err, res) => {
     if (err) {
+
         console.log('Unable to connect to location API');
+
+    } else if (res.body.error) {
+
+        console.log('Invalid location, please try again');
+
+    } else {
+
+        const { latitude, longitude } = res.body.data[0]
+        console.log(latitude, longitude);
     }
-    const { latitude, longitude } = res.body.data[0]
-    console.log(latitude, longitude);
 })
