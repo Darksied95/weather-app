@@ -9,8 +9,8 @@ function geocode(address, callback) {
         } else if (res.body.error) {
             callback('Unable to find location, please try again', undefined);
         } else {
-            const { latitude, longitude, name } = res.body.data[0]
-            callback(undefined, { latitude, longitude, name });
+            const { latitude, longitude, label } = res.body.data[0]
+            callback(undefined, { latitude, longitude, label });
         }
     })
 }
